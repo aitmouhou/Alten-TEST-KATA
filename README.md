@@ -26,7 +26,7 @@ mvn spring-boot:run
 #### Exécution en JVM :
 
 ``` bash
-java -jar target/product-management-0.0.1-SNAPSHOT.jar
+java -jar target/online-shopping-site.jar
 ```
 ## 6) Build de l'application Front-End
 Installation des dépendances :
