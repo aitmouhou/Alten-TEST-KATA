@@ -15,30 +15,31 @@ Accédez à la documentation de l'API via **Swagger** à l'adresse suivante :
 
 ## 5) Build de l'application Back-End
 - **Build** :
-  ```bash
-  mvn clean install
-Exécution via Maven :
+```bash
+  mvn clean install 
+```
+#### Exécution via Maven :
 
-bash
-Copy
+``` bash
 mvn spring-boot:run
-Exécution en JVM :
+```
+#### Exécution en JVM :
 
-bash
-Copy
+``` bash
 java -jar target/product-management-0.0.1-SNAPSHOT.jar
-6) Build de l'application Front-End
+```
+## 6) Build de l'application Front-End
 Installation des dépendances :
 
-bash
-Copy
+```bash
 npm install
-Exécution :
+```
+#### Exécution :
 
-bash
-Copy
+``` bash
 ng serve
-Copy
+```
+
 
 ## Problème Connu
 
@@ -52,6 +53,7 @@ paginationProducts = computed(() => {
   return this.products().slice(startIndex, endIndex);
 });
 
+```
 ### Cause
 La pagination ne prend pas en compte les nouveaux produits ajoutés tant que la liste complète (this.products()) n'est pas mise à jour ou que la pagination n'est pas recalculée.
 
