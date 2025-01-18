@@ -1,0 +1,12 @@
+<p-toolbar [style]="{ height: '100px' }">
+  <div class="p-toolbar-group-start">
+    <img src="assets/icons/icon-72x72.png" alt="logo" />
+  </div>
+  <div class="p-toolbar-group-center">
+    {{ title }}
+  </div>
+  <div class="p-toolbar-group-end">
+    <i class="pi pi-shopping-cart" style="font-size: 2rem" (click)="toggleProductList()"></i>
+    <span class="cart-badge">{{ cartProductsCount() }}</span>
+  </div>
+</p-toolbar>

@@ -1,0 +1,12 @@
+## Frontend 
+
+1) Build the Project : npm install
+
+2) Run the Application : ng serve
+
+## Backend
+ 
+1) Build the Project : mvn clean install
+
+2) Run the Application : mvn spring-boot:run / java -jar target/online-shopping-site.jar
+

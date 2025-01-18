@@ -1,0 +1,45 @@
+<div class="contact-container">
+  <h2>Contactez-nous</h2>
+  <form [formGroup]="contactFg" (ngSubmit)="onSubmit()">
+
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Saisir votre email"
+        required
+        pInputText
+      />
+      @if (contactFg.get('email')?.invalid && contactFg.get('email')?.touched) {
+      <small class="p-error">
+        Veuillez entrer une adresse email valide.
+      </small>
+      }
+    </div>
+
+    <div class="form-field">
+      <label for="message">Message</label>
+      <textarea
+        id="message"
+        formControlName="message"
+        placeholder="Saisir votre message"
+        required
+        pInputTextarea
+      ></textarea>
+      @if (contactFg.get('message')?.invalid && contactFg.get('message')?.touched) {
+      <small class="p-error">
+        Le message doit contenir au moins 10 caractères.
+      </small>
+      }
+    </div>
+
+    <!-- Bouton Envoyer avec PrimeNG -->
+    <p-button
+      type="submit"
+      label="Envoyer"
+      [disabled]="!contactFg.valid"
+    ></p-button>
+  </form>
+</div>

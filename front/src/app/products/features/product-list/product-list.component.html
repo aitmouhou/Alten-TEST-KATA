@@ -1,0 +1,61 @@
+<h1 class="text-center">Liste des produits</h1>
+
+<p-button label="Créer produit" (onClick)="onCreate()" class="block text-center"/>
+
+<p-dataView #dv [value]="paginationProducts()">
+  <ng-template pTemplate="list" let-products>
+    @for (product of products; track product) {
+    <p-card class="block mb-2">
+      <img  [alt]="product.name" class="product-image" />
+      <span class=" text-secondary text-sm">{{ product.category }}</span>
+      <div class="text-lg  text-900 mt-2">{{ product.name }}</div>
+      <p class="text-sm text-700 mt-1">{{ product.description }}</p>
+      <div class="flex gap-2 mt-2">
+        <span class=" text-900">Prix : {{ product.price | currency }}</span>
+        <span class=" text-900">Quantité : {{ product.quantity }}</span>
+      </div>
+      <div class="mt-2">
+        <span  [ngClass]="{
+    'text-blue-500': product.inventoryStatus === 'INSTOCK',
+    'text-yellow-500': product.inventoryStatus === 'LOWSTOCK',
+    'text-red-500': product.inventoryStatus === 'OUTOFSTOCK'
+    }">
+          Statut : {{ product.inventoryStatus }}
+    </span>
+  </div>
+
+  <div class="text-sm text-600 mt-2">
+    <p>Référence interne : {{ product.internalReference }}</p>
+        <p>Shell ID : {{ product.shellId }}</p>
+      </div>
+
+      <div class="text-sm text-600 mt-2">
+        <p>Note : {{ product.rating }}/5</p>
+        <p>Créé le : {{ product.createdAt  }}</p>
+        <p>Mis à jour le : {{ product.updatedAt  }}</p>
+      </div>
+
+      <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+          <p-button label="Modifier" severity="secondary" (onClick)="onUpdate(product)" />
+          <p-button label="Supprimer" severity="danger" (onClick)="onDelete(product)" />
+          <p-button label="Ajouter au panier" severity="primary" (onClick)="addToCart(product)" />
+        </div>
+      </ng-template>
+    </p-card>
+    }
+  </ng-template>
+</p-dataView>
+
+<p-paginator [rows]="pageSize()" [totalRecords]="totalItems()" (onPageChange)="onPageChange($event)"></p-paginator>
+
+
+<p-dialog [(visible)]="isDialogVisible"
+    [style]="{ width: '50vw' }"
+    header="Ajout/Edition produit">
+    <app-product-form
+        [product]="editedProduct()"
+        (save)="onSave($event)"
+        (cancel)="onCancel()"
+    />
+</p-dialog>

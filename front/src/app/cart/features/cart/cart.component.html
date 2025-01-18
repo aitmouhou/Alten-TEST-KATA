@@ -1,0 +1,36 @@
+
+<h1>Votre panier</h1>
+
+<p-table [value]="products()">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Catégorie</th>
+      <th>Nom</th>
+      <th>Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+    <tr>
+      <td>
+        <span class="font-medium text-secondary text-sm">{{ product.category }}</span>
+      </td>
+      <td>
+        <div class="text-lg font-medium text-900">{{ product.name }}</div>
+      </td>
+      <td>
+        <div class="flex gap-3">
+          <p-button label="Supprimer" severity="danger" (onClick)="removeProduct(product.id)" />
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    @if(!products() || products().length===0 ){
+      <tr>
+        <td class="text-center align-middle" colspan="8">
+          <strong>Votre panier est vide </strong>
+        </td>
+      </tr>
+    }
+  </ng-template>
+</p-table>
